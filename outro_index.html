@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geovane Stripe</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://js.stripe.com/v3/"></script>
+  </head>
+  <body>
+    <button id="checkout">checkout</button>
+
+    <script>
+      var stripe = Stripe(
+        "pk_live_51OOLYtAxoTn2yIUjlW0ujrLK9Cey2aPKP7dM987Eowce54T3jZtXtsMvRbH2x0yyDfioRju1gTFe2KAWTlvPxJKX00WZM2LiPr"
+      )
+
+      document.getElementById("checkout").addEventListener("click", function(){
+        stripe.redirectToCheckout({
+          lineItems: [
+            {
+              price: "price_1OWSgbAxoTn2yIUjR02eazcj",
+              quantity: 1,
+            },
+          ],
+          mode: "subscription",
+          successUrl: "https://www.google.com/",
+          cancelUrl: "https://www.youtube.com",
+        })
+        .then(function(result){
+          
+        });
+      })
+    </script>
+  </body>
+</html>
